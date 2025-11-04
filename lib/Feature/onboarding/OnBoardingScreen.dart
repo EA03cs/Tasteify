@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tasteify/Feature/Auth/presentation/Screens/Login.dart';
 import 'package:tasteify/Feature/onboarding/FirstScreen.dart';
-
 
 import '../../Core/utils/appText.dart';
 import '../../Core/utils/colors.dart';
@@ -63,7 +63,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             left: 20.w,
             child: TextButton(
               onPressed: () {
-
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                );
               },
               child: Text(
                 'تخطي',
@@ -84,6 +89,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   if (_currentPage == 2) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
                   } else {
                     _pageController.nextPage(
                       duration: const Duration(milliseconds: 300),
@@ -96,7 +107,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.r),
                   ),
-                  minimumSize: Size(double.infinity, 50.h),),
+                  minimumSize: Size(double.infinity, 50.h),
+                ),
                 child: Text(
                   _currentPage == 2 ? 'ابدأ الآن' : 'التالي',
                   style: AppTextStyles.bodyStyle.copyWith(
@@ -126,5 +138,4 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       ),
     );
   }
-
 }
