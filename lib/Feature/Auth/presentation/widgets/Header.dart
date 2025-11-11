@@ -18,7 +18,7 @@ class Header extends StatelessWidget {
         children: [
           SizedBox(height: 60.h),
           Text(
-            'تسجيل دخول',
+            title,
             style: AppTextStyles.titleStyle.copyWith(
               color: AppColors.white,
               fontSize: 26.sp,
@@ -26,7 +26,7 @@ class Header extends StatelessWidget {
           ),
           SizedBox(height: 8.h),
           Text(
-            'سعدنا بعودتك! ابدأ تسجيل الدخول للمتابعة إلى حسابك والاستفادة من جميع خدماتنا',
+            subtitle,
             style: AppTextStyles.bodyStyle.copyWith(
               color: AppColors.white,
               fontSize: 11.sp,

@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
 
-        // RTL Direction
         builder: (context, child) {
           return Directionality(
             textDirection: TextDirection.rtl,

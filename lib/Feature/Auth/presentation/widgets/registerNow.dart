@@ -21,10 +21,7 @@ class RegisterNowText extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (_) => const CreateAccountScreen()),
-              // );
+
             },
             child: Text(
               'أنشئ حسابك الآن',
