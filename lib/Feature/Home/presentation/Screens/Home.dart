@@ -6,7 +6,9 @@ import 'package:tasteify/Core/utils/colors.dart';
 import 'package:tasteify/Core/widgets/AppName.dart';
 import 'package:tasteify/Core/widgets/SearchField.dart';
 import 'package:tasteify/Core/widgets/productGrid.dart';
+import 'package:tasteify/Feature/Categories/Presentation/Screens/CatScreen.dart';
 import 'package:tasteify/Feature/Home/presentation/Widgets/CatCard.dart';
+import 'package:tasteify/Feature/Notification/Presentation/Screens/NotificationView.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -23,7 +25,11 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Icon(Icons.notifications_none_outlined, size: 30.sp),
+                  GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>  const NotificationView()));
+                      },
+                      child: Icon(Icons.notifications_none_outlined, size: 30.sp)),
                   Spacer(),
                   AppName(),
                 ],
@@ -36,7 +42,9 @@ class HomeScreen extends StatelessWidget {
                   Text('الفئات', style: AppTextStyles.subtitleStyle),
                   Spacer(),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>  const CatScreen()));
+                    },
                     child: Text(
                       'عرض الكل',
                       style: AppTextStyles.bodyStyle.copyWith(
