@@ -49,7 +49,7 @@ class CatScreen extends StatelessWidget {
                     else if (state is CategoriesFailure) {
                       return Text(state.error);
                     }
-                    return Text('احا');
+                    return Text('');
                   },
                 ),
               ),
