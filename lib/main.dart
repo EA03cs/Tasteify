@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tasteify/Feature/Categories/ViewModel/cubit/categories_cubit.dart';
 import 'package:tasteify/Feature/splash/splashScreen.dart';
 
 void main() {
@@ -14,29 +16,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-
-        locale: const Locale('ar', 'EG'),
-        supportedLocales: const [
-          Locale('ar', 'EG'),
-          Locale('ar'),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => CategoriesCubit(),
+          ),
         ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
 
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
+          locale: const Locale('ar', 'EG'),
+          supportedLocales: const [
+            Locale('ar', 'EG'),
+            Locale('ar'),
+          ],
 
-        builder: (context, child) {
-          return Directionality(
-            textDirection: TextDirection.rtl,
-            child: child!,
-          );
-        },
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
 
-        home: const SplashScreen(),
+          builder: (context, child) {
+            return Directionality(
+              textDirection: TextDirection.rtl,
+              child: child!,
+            );
+          },
+
+          home: const SplashScreen(),
+        ),
       ),
     );
   }
