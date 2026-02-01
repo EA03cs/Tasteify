@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tasteify/Feature/Home/presentation/Widgets/productCard.dart';
+import 'package:tasteify/Core/widgets/productCard.dart';
 
 class ProductsGridView extends StatefulWidget {
   const ProductsGridView({super.key});
@@ -49,7 +49,7 @@ class _ProductsGridViewState extends State<ProductsGridView> {
         crossAxisCount: 2,
         crossAxisSpacing: 12.w,
         mainAxisSpacing: 12.h,
-        mainAxisExtent: 300.h,
+        mainAxisExtent: 180.h,
         childAspectRatio: 0.7.w,
       ),
       itemCount: products.length,

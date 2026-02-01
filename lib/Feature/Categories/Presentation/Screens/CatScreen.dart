@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tasteify/Core/utils/colors.dart';
 import 'package:tasteify/Core/widgets/SearchField.dart';
 import 'package:tasteify/Core/widgets/custAppBaar.dart';
 import 'package:tasteify/Feature/Categories/Presentation/Widgets/CatItem.dart';
 import 'package:tasteify/Feature/Categories/ViewModel/Cubit/categories_cubit.dart';
+import 'package:tasteify/Feature/productdetails/presentation/screens/productsScreen.dart';
 
 class CatScreen extends StatelessWidget {
   const CatScreen({super.key});
@@ -25,7 +27,14 @@ class CatScreen extends StatelessWidget {
                 child: BlocBuilder<CategoriesCubit, CategoriesState>(
                   builder: (context, state) {
                     if (state is CategoriesLoading) {
-                      return CircularProgressIndicator();
+                      return SizedBox(
+                        height: 150.h,
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.primaryRed,
+                          ),
+                        ),
+                      );
                     }
                     else if (state is CategoriesSuccess) {
                       final cat = state.categories;
@@ -39,9 +48,14 @@ class CatScreen extends StatelessWidget {
                         itemCount: cat.length,
                         itemBuilder: (context, index) {
                           final category = state.categories[index];
-                          return CategoryItem(
-                            image: category.imageUrl,
-                            title: category.name,
+                          return GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ProductsScreen(name: category.name),));
+                            },
+                            child: CategoryItem(
+                              image: category.imageUrl,
+                              title: category.name,
+                            ),
                           );
                         },
                       );
