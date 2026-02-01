@@ -16,7 +16,7 @@ class CatScreen extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(title: 'الفئات'),
       body: Padding(
-        padding: EdgeInsets.all(16.w),
+        padding: EdgeInsets.all(8.w),
         child: Column(
           children: [
             const SearchField(),

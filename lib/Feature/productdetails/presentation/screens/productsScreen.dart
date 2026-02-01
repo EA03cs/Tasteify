@@ -14,7 +14,7 @@ class ProductsScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: name),
       body: Padding(
-        padding: EdgeInsets.all(16.w),
+        padding: EdgeInsets.all(8.0.w),
         child: SingleChildScrollView(
           child: Column(
             children: [
