@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasteify/Feature/Categories/ViewModel/cubit/categories_cubit.dart';
+import 'package:tasteify/Feature/productdetails/viewmodel/cubit/product_details_cubit.dart';
+import 'package:tasteify/Feature/productdetails/viewmodel/cubit/products_cubit.dart';
 import 'package:tasteify/Feature/splash/splashScreen.dart';
 
 void main() {
@@ -18,9 +20,9 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(
-            create: (context) => CategoriesCubit(),
-          ),
+          BlocProvider(create: (_) => CategoriesCubit()),
+          BlocProvider(create: (_) => ProductsCubit()),
+          BlocProvider(create: (_) => ProductDetailsCubit()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

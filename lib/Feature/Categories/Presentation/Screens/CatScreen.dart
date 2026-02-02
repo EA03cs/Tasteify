@@ -13,31 +13,27 @@ class CatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: 'الفئات'),
-      body: Padding(
-        padding: EdgeInsets.all(8.w),
-        child: Column(
-          children: [
-            const SearchField(),
-            SizedBox(height: 16.h),
-            Expanded(
-              child: BlocProvider(
-                create: (context) => CategoriesCubit()..FetchCat(),
+    return BlocProvider(
+      create: (context) => CategoriesCubit()..FetchCat(),
+      child: Scaffold(
+        appBar: const CustomAppBar(title: 'الفئات'),
+        body: Padding(
+          padding: EdgeInsets.all(8.w),
+          child: Column(
+            children: [
+              const SearchField(),
+              SizedBox(height: 16.h),
+              Expanded(
                 child: BlocBuilder<CategoriesCubit, CategoriesState>(
                   builder: (context, state) {
                     if (state is CategoriesLoading) {
-                      return SizedBox(
-                        height: 150.h,
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.primaryRed,
-                          ),
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primaryRed,
                         ),
                       );
-                    }
-                    else if (state is CategoriesSuccess) {
-                      final cat = state.categories;
+                    } else if (state is CategoriesSuccess) {
+                      final categories = state.categories;
                       return GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
@@ -45,12 +41,20 @@ class CatScreen extends StatelessWidget {
                           crossAxisSpacing: 16.w,
                           mainAxisSpacing: 16.h,
                         ),
-                        itemCount: cat.length,
+                        itemCount: categories.length,
                         itemBuilder: (context, index) {
-                          final category = state.categories[index];
+                          final category = categories[index];
                           return GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ProductsScreen(name: category.name),));
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProductsScreen(
+                                    categoryId: category.id,
+                                    categoryName: category.name,
+                                  ),
+                                ),
+                              );
                             },
                             child: CategoryItem(
                               image: category.imageUrl,
@@ -59,19 +63,19 @@ class CatScreen extends StatelessWidget {
                           );
                         },
                       );
+                    } else if (state is CategoriesFailure) {
+                      return Center(
+                        child: Text(state.error),
+                      );
                     }
-                    else if (state is CategoriesFailure) {
-                      return Text(state.error);
-                    }
-                    return Text('');
+                    return const SizedBox();
                   },
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
-
 }

@@ -23,7 +23,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<CategoriesCubit>().FetchCat();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<CategoriesCubit>().FetchCat();
+    });
   }
 
   @override
@@ -106,6 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             imagePath: category.imageUrl ?? 'assets/Frame 11075.png',
                             categoryName: category.name ?? '',
                             onTap: () {
+
                             },
                           );
                         }).toList(),

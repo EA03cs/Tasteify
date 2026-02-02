@@ -7,6 +7,8 @@ class ProductCard extends StatelessWidget {
   final String productName;
   final String price;
   final String? discount;
+  final bool isWeighedProduct;
+  final String unitSymbol;
   final VoidCallback? onAddPressed;
   final VoidCallback? onFavoritePressed;
   final bool isFavorite;
@@ -17,6 +19,8 @@ class ProductCard extends StatelessWidget {
     required this.productName,
     required this.price,
     this.discount,
+    this.isWeighedProduct = false,
+    this.unitSymbol = '',
     this.onAddPressed,
     this.onFavoritePressed,
     this.isFavorite = false,
@@ -53,7 +57,7 @@ class ProductCard extends StatelessWidget {
                     topLeft: Radius.circular(12.r),
                     topRight: Radius.circular(12.r),
                   ),
-                  child: Image.asset(
+                  child: Image.network(
                     imagePath,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -63,6 +67,14 @@ class ProductCard extends StatelessWidget {
                           CupertinoIcons.photo,
                           size: 30.sp,
                           color: CupertinoColors.systemGrey3,
+                        ),
+                      );
+                    },
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CupertinoActivityIndicator(
+                          radius: 10.r,
                         ),
                       );
                     },
@@ -157,15 +169,32 @@ class ProductCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
-                            price,
-                            style: TextStyle(
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.bold,
-                              color: CupertinoColors.activeOrange,
-                            ),
+                          RichText(
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: price,
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: CupertinoColors.activeOrange,
+                                    fontFamily: 'Cairo',
+                                  ),
+                                ),
+                                if (isWeighedProduct && unitSymbol.isNotEmpty)
+                                  TextSpan(
+                                    text: ' / $unitSymbol',
+                                    style: TextStyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.normal,
+                                      color: CupertinoColors.systemGrey,
+                                      fontFamily: 'Cairo',
+                                    ),
+                                  ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

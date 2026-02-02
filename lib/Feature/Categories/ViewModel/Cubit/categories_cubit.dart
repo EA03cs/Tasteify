@@ -3,12 +3,14 @@ import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
+import 'package:tasteify/Feature/Categories/ViewModel/model/CategoryWithProducts.dart';
 import 'package:tasteify/Feature/Categories/ViewModel/model/catModel.dart';
 
 part 'categories_state.dart';
 
 class CategoriesCubit extends Cubit<CategoriesState> {
   CategoriesCubit() : super(CategoriesInitial());
+
   Future<void> FetchCat() async {
     emit(CategoriesLoading());
     try {
@@ -22,7 +24,6 @@ class CategoriesCubit extends Cubit<CategoriesState> {
       );
 
       if (response.statusCode == 200) {
-
         final List list = response.data;
 
         final categories = list
@@ -30,10 +31,11 @@ class CategoriesCubit extends Cubit<CategoriesState> {
             .toList();
         emit(CategoriesSuccess(categories));
       } else {
-        emit(CategoriesFailure(error: ''));
+        emit(CategoriesFailure(error: 'فشل في تحميل الفئات'));
       }
     } catch (e) {
       emit(CategoriesFailure(error: e.toString()));
     }
   }
+
 }
