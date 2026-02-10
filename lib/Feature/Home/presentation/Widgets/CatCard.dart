@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasteify/Core/utils/appText.dart';
+import 'package:tasteify/Core/utils/colors.dart';
 
 class CategoryCard extends StatelessWidget {
   final String imagePath;
@@ -39,8 +40,8 @@ class CategoryCard extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
                   colors: [
-                    CupertinoColors.systemOrange.withOpacity(0.8),
-                    CupertinoColors.systemRed.withOpacity(0.6),
+                    AppColors.darkerRed.withOpacity(0.8),
+                    AppColors.primaryRed.withOpacity(0.8),
                   ],
                 ),
               ),

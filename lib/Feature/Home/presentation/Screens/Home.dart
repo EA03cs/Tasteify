@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:tasteify/Core/utils/appText.dart';
 import 'package:tasteify/Core/utils/colors.dart';
 import 'package:tasteify/Core/widgets/AppName.dart';
@@ -10,6 +12,7 @@ import 'package:tasteify/Core/widgets/productGrid.dart';
 import 'package:tasteify/Feature/Categories/Presentation/Screens/CatScreen.dart';
 import 'package:tasteify/Feature/Categories/ViewModel/cubit/categories_cubit.dart';
 import 'package:tasteify/Feature/Home/presentation/Widgets/CatCard.dart';
+import 'package:tasteify/Feature/Home/presentation/Widgets/PromoBanner.dart';
 import 'package:tasteify/Feature/Notification/Presentation/Screens/NotificationView.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,6 +23,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
   @override
   void initState() {
     super.initState();
@@ -61,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SearchField(),
               SizedBox(height: 10.h),
-              Image.asset('assets/Component 2.png'),
+              PromoBanner(),
               Row(
                 children: [
                   Text('الفئات', style: AppTextStyles.subtitleStyle),
@@ -108,9 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           return CategoryCard(
                             imagePath: category.imageUrl ?? 'assets/Frame 11075.png',
                             categoryName: category.name ?? '',
-                            onTap: () {
-
-                            },
+                            onTap: () {},
                           );
                         }).toList(),
                       ),
@@ -147,9 +150,61 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               ProductsGridView(),
+              SizedBox(height: 80.h),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        index: _selectedIndex,
+        backgroundColor: Colors.transparent,
+        color:AppColors.darkerRed,
+        buttonBackgroundColor: AppColors.primaryRed,
+        height: 65.h,
+        animationDuration: Duration(milliseconds: 300),
+        items: [
+          CurvedNavigationBarItem(
+            child: Icon(Icons.home_outlined, size: 26.sp, color: Colors.white),
+            label: 'الرئيسية',
+            labelStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 12.sp,
+              fontFamily: 'Cairo',
+            ),
+          ),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.category_outlined, size: 26.sp, color: Colors.white),
+            label: 'الفئات',
+            labelStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 12.sp,
+              fontFamily: 'Cairo',
+            ),
+          ),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.shopping_cart_outlined, size: 26.sp, color: Colors.white),
+            label: 'السلة',
+            labelStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 12.sp,
+              fontFamily: 'Cairo',
+            ),
+          ),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.person_outline, size: 26.sp, color: Colors.white),
+            label: 'الحساب',
+            labelStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 12.sp,
+              fontFamily: 'Cairo',
+            ),
+          ),
+        ],
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
     );
   }

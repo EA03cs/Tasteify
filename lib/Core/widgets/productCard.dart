@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tasteify/Core/utils/colors.dart';
 
 class ProductCard extends StatelessWidget {
   final String imagePath;
@@ -89,7 +90,7 @@ class ProductCard extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFFA500),
+                      color:AppColors.darkerRed.withOpacity(0.8),
                       borderRadius: BorderRadius.circular(20.r),
                     ),
                     child: Row(
@@ -179,7 +180,8 @@ class ProductCard extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 13.sp,
                                     fontWeight: FontWeight.bold,
-                                    color: CupertinoColors.activeOrange,
+                                    color:AppColors.darkerRed.withOpacity(0.8),
+
                                     fontFamily: 'Cairo',
                                   ),
                                 ),
@@ -205,8 +207,8 @@ class ProductCard extends StatelessWidget {
                       child: Container(
                         width: 32.w,
                         height: 32.h,
-                        decoration: const BoxDecoration(
-                          color: Color(0xFFB91C1C),
+                        decoration: BoxDecoration(
+                          color:AppColors.darkerRed.withOpacity(0.8),
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
