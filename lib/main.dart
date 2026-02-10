@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tasteify/Core/cache/cache_helper.dart';
 import 'package:tasteify/Feature/Categories/ViewModel/cubit/categories_cubit.dart';
 import 'package:tasteify/Feature/productdetails/viewmodel/cubit/product_details_cubit.dart';
 import 'package:tasteify/Feature/productdetails/viewmodel/cubit/products_cubit.dart';
 import 'package:tasteify/Feature/splash/splashScreen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await CacheHelper().init();
   runApp(const MyApp());
 }
 

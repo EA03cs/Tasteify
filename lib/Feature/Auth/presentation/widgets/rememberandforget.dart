@@ -9,42 +9,14 @@ class RememberAndForgotRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        RememberMeCheckbox(),
         ForgotPasswordButton(),
       ],
     );
   }
 }
 
-class RememberMeCheckbox extends StatelessWidget {
-  const RememberMeCheckbox({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Checkbox(
-          value: false,
-          onChanged: (value) {},
-          activeColor: AppColors.primaryRed,
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          visualDensity: VisualDensity.compact,
-        ),
-        Text(
-          'تذكرني',
-          style: TextStyle(
-            fontSize: 13.sp,
-            fontFamily: 'Cairo',
-            fontWeight: FontWeight.bold,
-            color: AppColors.greyText,
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 class ForgotPasswordButton extends StatelessWidget {
   const ForgotPasswordButton({super.key});

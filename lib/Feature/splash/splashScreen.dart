@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tasteify/Feature/onboarding/FirstScreen.dart';
+import 'package:tasteify/Core/cache/cache_helper.dart';
+import 'package:tasteify/Feature/Home/presentation/Screens/Home.dart';
 import 'package:tasteify/Feature/onboarding/OnBoardingScreen.dart';
-
-import '../onboarding/SecondScreen.dart';
-import '../onboarding/ThirdScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -38,16 +36,27 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-    Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const OnBoardingScreen(),
-          ),
-        );
-      }
-    });
+    _navigateNext();
+  }
+
+  void _navigateNext() async {
+    await Future.delayed(const Duration(seconds: 3));
+
+    final token = CacheHelper().getData(key: 'token');
+
+    if (!mounted) return;
+
+    if (token != null && token.toString().isNotEmpty) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const HomeScreen()),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const OnBoardingScreen()),
+      );
+    }
   }
 
   @override
