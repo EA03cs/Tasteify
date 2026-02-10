@@ -63,12 +63,6 @@ class _LoginFormState extends State<LoginForm> {
               OrDivider(),
               SizedBox(height: 18.h),
               const SocialLoginButton(
-                icon: Icons.facebook,
-                text: 'تابع باستخدام فيسبوك',
-                iconColor: Color(0xFF1877F2),
-              ),
-              SizedBox(height: 12.h),
-              const SocialLoginButton(
                 icon: Icons.g_mobiledata,
                 text: 'تابع باستخدام جوجل',
                 iconColor: Colors.red,
