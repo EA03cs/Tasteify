@@ -23,7 +23,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -154,57 +153,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: CurvedNavigationBar(
-        index: _selectedIndex,
-        backgroundColor: Colors.transparent,
-        color:AppColors.darkerRed,
-        buttonBackgroundColor: AppColors.primaryRed,
-        height: 65.h,
-        animationDuration: Duration(milliseconds: 300),
-        items: [
-          CurvedNavigationBarItem(
-            child: Icon(Icons.home_outlined, size: 26.sp, color: Colors.white),
-            label: 'الرئيسية',
-            labelStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 12.sp,
-              fontFamily: 'Cairo',
-            ),
-          ),
-          CurvedNavigationBarItem(
-            child: Icon(Icons.category_outlined, size: 26.sp, color: Colors.white),
-            label: 'الفئات',
-            labelStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 12.sp,
-              fontFamily: 'Cairo',
-            ),
-          ),
-          CurvedNavigationBarItem(
-            child: Icon(Icons.shopping_cart_outlined, size: 26.sp, color: Colors.white),
-            label: 'السلة',
-            labelStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 12.sp,
-              fontFamily: 'Cairo',
-            ),
-          ),
-          CurvedNavigationBarItem(
-            child: Icon(Icons.person_outline, size: 26.sp, color: Colors.white),
-            label: 'الحساب',
-            labelStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 12.sp,
-              fontFamily: 'Cairo',
-            ),
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
       ),
     );
   }

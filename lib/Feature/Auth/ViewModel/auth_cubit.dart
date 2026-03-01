@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 import 'package:tasteify/Core/cache/cache_helper.dart';
+import 'package:tasteify/Core/utils/constant.dart';
 import 'package:tasteify/Feature/Auth/ViewModel/models/login.dart';
-import 'package:tasteify/constant.dart';
 
 part 'auth_state.dart';
 

@@ -8,6 +8,7 @@ import 'package:tasteify/Feature/Auth/presentation/widgets/loginTextField.dart';
 import 'package:tasteify/Feature/Auth/presentation/widgets/registerNow.dart';
 import 'package:tasteify/Feature/Auth/presentation/widgets/rememberandforget.dart';
 import 'package:tasteify/Feature/Home/presentation/Screens/Home.dart';
+import 'package:tasteify/root.dart';
 import '../../../../Core/utils/colors.dart';
 import 'SocialLogin.dart';
 
@@ -31,7 +32,7 @@ class _LoginFormState extends State<LoginForm> {
         if (state is loginSuccess) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (_) => const HomeScreen()),
+            MaterialPageRoute(builder: (_) => const Root()),
           );
         }
 
