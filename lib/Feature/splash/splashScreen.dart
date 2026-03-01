@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasteify/Core/cache/cache_helper.dart';
-import 'package:tasteify/Feature/Home/presentation/Screens/Home.dart';
 import 'package:tasteify/Feature/onboarding/OnBoardingScreen.dart';
+import 'package:tasteify/root.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -49,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen>
     if (token != null && token.toString().isNotEmpty) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
+        MaterialPageRoute(builder: (_) => const Root()),
       );
     } else {
       Navigator.pushReplacement(
