@@ -6,6 +6,7 @@ import 'package:tasteify/Core/utils/colors.dart';
 import 'package:tasteify/Feature/Categories/Presentation/Screens/CatScreen.dart';
 import 'package:tasteify/Feature/Categories/ViewModel/cubit/categories_cubit.dart';
 import 'package:tasteify/Feature/Home/presentation/Widgets/CatCard.dart';
+import 'package:tasteify/Feature/productdetails/presentation/screens/productsScreen.dart';
 
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({super.key});
@@ -52,7 +53,7 @@ class CategoriesSection extends StatelessWidget {
         if (state is CategoriesLoading) {
           return _buildLoadingState();
         } else if (state is CategoriesSuccess) {
-          return _buildSuccessState(state);
+          return _buildSuccessState(state,context);
         } else if (state is CategoriesFailure) {
           return _buildErrorState();
         }
@@ -72,7 +73,7 @@ class CategoriesSection extends StatelessWidget {
     );
   }
 
-  Widget _buildSuccessState(CategoriesSuccess state) {
+  Widget _buildSuccessState(CategoriesSuccess state , BuildContext context) {
     final limitedCategories = state.categories.take(4).toList();
 
     return SingleChildScrollView(
@@ -84,7 +85,9 @@ class CategoriesSection extends StatelessWidget {
           return CategoryCard(
             imagePath: category.imageUrl,
             categoryName: category.name,
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductsScreen(categoryId: category.id, categoryName: category.name ) ));
+            },
           );
         }).toList(),
       ),
