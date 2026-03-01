@@ -8,11 +8,14 @@ class FavScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "المفضلة"),
-      body: Column(
-        children: [
-          ProductsGridView()
-        ],
+      appBar: CustomAppBar(title: "المفضلة", showBackButton: false,),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            ProductsGridView()
+          ],
+        ),
       ),
     );
   }

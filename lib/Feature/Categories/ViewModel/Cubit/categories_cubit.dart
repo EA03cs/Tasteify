@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
-import 'package:tasteify/Feature/Categories/ViewModel/model/CategoryWithProducts.dart';
 import 'package:tasteify/Feature/Categories/ViewModel/model/catModel.dart';
 
 part 'categories_state.dart';
