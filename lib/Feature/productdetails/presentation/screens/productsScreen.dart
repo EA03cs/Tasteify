@@ -5,7 +5,6 @@ import 'package:tasteify/Core/utils/colors.dart';
 import 'package:tasteify/Core/widgets/SearchField.dart';
 import 'package:tasteify/Core/widgets/custAppBaar.dart';
 import 'package:tasteify/Core/widgets/ProductCard.dart';
-import 'package:tasteify/Feature/Categories/ViewModel/Cubit/categories_cubit.dart';
 import 'package:tasteify/Feature/productdetails/presentation/screens/ProductDetails.dart';
 import 'package:tasteify/Feature/productdetails/viewmodel/cubit/products_cubit.dart';
 

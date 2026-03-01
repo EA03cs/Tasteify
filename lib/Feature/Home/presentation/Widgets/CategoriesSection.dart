@@ -82,8 +82,8 @@ class CategoriesSection extends StatelessWidget {
         spacing: 3.w,
         children: limitedCategories.map((category) {
           return CategoryCard(
-            imagePath: category.imageUrl ?? 'assets/Frame 11075.png',
-            categoryName: category.name ?? '',
+            imagePath: category.imageUrl,
+            categoryName: category.name,
             onTap: () {},
           );
         }).toList(),

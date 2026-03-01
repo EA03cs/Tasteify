@@ -42,7 +42,7 @@ class CategoryItem extends StatelessWidget {
                   right: 20.w,
                   bottom: 8.h,
                 ),
-                child: Image.asset(
+                child: Image.network(
                   image,
                   fit: BoxFit.contain,
                 ),
