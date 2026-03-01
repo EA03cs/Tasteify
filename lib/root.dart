@@ -5,6 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasteify/Core/utils/colors.dart';
 import 'package:tasteify/Feature/Home/presentation/Screens/Home.dart';
 import 'package:tasteify/Feature/Favourite/presentation/Screen/FavScreen.dart';
+import 'package:tasteify/Feature/Profile/Presentation/Screens/ProfileView.dart';
+import 'package:tasteify/Feature/Cart/Presentation/Screen/Cart.dart';
+
 
 
 class Root extends StatefulWidget {
@@ -21,6 +24,9 @@ class _RootState extends State<Root> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const FavScreen(),
+    const Cart(),
+    const ProfileView(),
+
   ];
 
   @override
@@ -64,6 +70,33 @@ class _RootState extends State<Root> {
               fontFamily: 'Cairo',
             ),
           ),
+          CurvedNavigationBarItem(
+            child: Icon(
+              Icons.shopping_cart_outlined,
+              size: 26.sp,
+              color: Colors.white,
+            ),
+            label: 'السلة',
+            labelStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 12.sp,
+              fontFamily: 'Cairo',
+            ),
+          ),
+          CurvedNavigationBarItem(
+            child: Icon(
+              Icons.account_circle_outlined,
+              size: 26.sp,
+              color: Colors.white,
+            ),
+            label: 'حسابي',
+            labelStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 12.sp,
+              fontFamily: 'Cairo',
+            ),
+          ),
+
         ],
 
         onTap: (index) {

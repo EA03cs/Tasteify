@@ -38,7 +38,11 @@ class _LoginFormState extends State<LoginForm> {
 
         if (state is loginError) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.error)),
+            SnackBar(content: Text(
+                'احد المدخلات خطأ حاول مرة اخرى',
+                style: AppTextStyles.bodyStyle,
+
+            )),
           );
         }
       },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tasteify/Core/utils/appText.dart';
 import 'package:tasteify/Core/utils/colors.dart';
 import 'package:tasteify/Core/widgets/SearchField.dart';
 import 'package:tasteify/Core/widgets/custAppBaar.dart';
@@ -65,7 +66,10 @@ class CatScreen extends StatelessWidget {
                       );
                     } else if (state is CategoriesFailure) {
                       return Center(
-                        child: Text(state.error),
+                        child: Text(
+                          'حدث خطأ في تحميل الفئات',
+                          style: AppTextStyles.bodyStyle,
+                        ),
                       );
                     }
                     return const SizedBox();
