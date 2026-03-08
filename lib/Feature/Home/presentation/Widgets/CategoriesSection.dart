@@ -31,9 +31,7 @@ class CategoriesSection extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => const CatScreen(),
-              ),
+              MaterialPageRoute(builder: (context) => const CatScreen()),
             );
           },
           child: Text(
@@ -53,7 +51,7 @@ class CategoriesSection extends StatelessWidget {
         if (state is CategoriesLoading) {
           return _buildLoadingState();
         } else if (state is CategoriesSuccess) {
-          return _buildSuccessState(state,context);
+          return _buildSuccessState(state, context);
         } else if (state is CategoriesFailure) {
           return _buildErrorState();
         }
@@ -66,14 +64,12 @@ class CategoriesSection extends StatelessWidget {
     return SizedBox(
       height: 150.h,
       child: Center(
-        child: CircularProgressIndicator(
-          color: AppColors.primaryRed,
-        ),
+        child: CircularProgressIndicator(color: AppColors.primaryRed),
       ),
     );
   }
 
-  Widget _buildSuccessState(CategoriesSuccess state , BuildContext context) {
+  Widget _buildSuccessState(CategoriesSuccess state, BuildContext context) {
     final limitedCategories = state.categories.take(4).toList();
 
     return SingleChildScrollView(
@@ -86,7 +82,15 @@ class CategoriesSection extends StatelessWidget {
             imagePath: category.imageUrl,
             categoryName: category.name,
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductsScreen(categoryId: category.id, categoryName: category.name ) ));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductsScreen(
+                    categoryId: category.id,
+                    categoryName: category.name,
+                  ),
+                ),
+              );
             },
           );
         }).toList(),
@@ -98,10 +102,7 @@ class CategoriesSection extends StatelessWidget {
     return SizedBox(
       height: 150.h,
       child: Center(
-        child: Text(
-          'حدث خطأ في تحميل الفئات',
-          style: AppTextStyles.bodyStyle,
-        ),
+        child: Text('حدث خطأ في تحميل الفئات', style: AppTextStyles.bodyStyle),
       ),
     );
   }

@@ -29,6 +29,13 @@ class _LoginFormState extends State<LoginForm> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is loginSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(
+              'تم تسجيل الدخول بنجاح',
+              style: AppTextStyles.bodyStyle,
+
+            )),
+          );
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (_) => const Root()),
