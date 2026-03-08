@@ -1,4 +1,4 @@
-class Product {
+class FavProduct {
   final int id;
   final String name;
   final String description;
@@ -9,12 +9,12 @@ class Product {
   final bool isWeighedProduct;
   final String unitName;
   final String unitSymbol;
-  final int minOrderQty;
-  final int maxOrderQty;
+  final double minOrderQty;
+  final double maxOrderQty;
   final int quantityInStock;
   final bool isAvailable;
 
-  Product({
+  FavProduct({
     required this.id,
     required this.name,
     required this.description,
@@ -31,9 +31,9 @@ class Product {
     required this.isAvailable,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
-      id: json['id'] as int,
+  factory FavProduct.fromJson(Map<String, dynamic> json) {
+    return FavProduct(
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       description: json['description'] as String,
       imageUrl: json['imageUrl'] as String,
@@ -45,12 +45,20 @@ class Product {
       isWeighedProduct: json['isWeighedProduct'] as bool,
       unitName: json['unitName'] as String,
       unitSymbol: json['unitSymbol'] as String,
-      minOrderQty: json['minOrderQty'] as int,
-      maxOrderQty: json['maxOrderQty'] as int,
-      quantityInStock: json['quantityInStock'] as int,
+      minOrderQty: (json['minOrderQty'] as num).toDouble(),
+      maxOrderQty: (json['maxOrderQty'] as num).toDouble(),
+      quantityInStock: (json['quantityInStock'] as num).toInt(),
       isAvailable: json['isAvailable'] as bool,
     );
   }
+
+  double get finalPrice => hasDiscount && discountedPrice != null
+      ? discountedPrice!
+      : unitPrice;
+
+  String? get discountPercentage => hasDiscount && discountedPrice != null
+      ? '${((unitPrice - discountedPrice!) / unitPrice * 100).round()}% off'
+      : null;
 
   Map<String, dynamic> toJson() {
     return {
@@ -72,7 +80,6 @@ class Product {
   }
 
   @override
-  String toString() {
-    return 'Product{id: $id, name: $name, unitPrice: $unitPrice}';
-  }
+  String toString() =>
+      'FavProduct{id: $id, name: $name, unitPrice: $unitPrice}';
 }

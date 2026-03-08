@@ -8,11 +8,11 @@ final class FavInitial extends FavState {}
 final class FavLoading extends FavState {}
 
 final class FavLoaded extends FavState {
-  final List<Product> favProduct;
+  final List<FavProduct> favProduct;
 
   FavLoaded({required this.favProduct});
 
-  FavLoaded copyWith({List<Product>? favProduct}) =>
+  FavLoaded copyWith({List<FavProduct>? favProduct}) =>
       FavLoaded(favProduct: favProduct ?? this.favProduct);
 
   List<Object?> get props => [favProduct];

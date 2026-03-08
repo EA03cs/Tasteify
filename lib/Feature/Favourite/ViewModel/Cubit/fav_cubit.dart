@@ -4,6 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:tasteify/Core/cache/cache_helper.dart';
 import 'package:tasteify/Core/utils/constant.dart';
 import 'package:tasteify/Feature/Categories/ViewModel/model/CategoryWithProducts.dart';
+import 'package:tasteify/Feature/Favourite/ViewModel/models/Favmodel.dart';
 
 part 'fav_state.dart';
 
@@ -42,7 +43,7 @@ class FavCubit extends Cubit<FavState> {
 
       if (response.statusCode == 200 && response.data is List) {
         final products = (response.data as List)
-            .map((item) => Product.fromJson(item))
+            .map((item) => FavProduct.fromJson(item))
             .toList();
         emit(FavLoaded(favProduct: products));
       } else {

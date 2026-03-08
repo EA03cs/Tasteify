@@ -5,8 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasteify/Core/widgets/ProductCard.dart';
 import 'package:tasteify/Core/widgets/custAppBaar.dart';
 import 'package:tasteify/Feature/Favourite/ViewModel/Cubit/fav_cubit.dart';
-import 'package:tasteify/Feature/Categories/ViewModel/model/CategoryWithProducts.dart';
-import 'package:tasteify/Feature/productdetails/presentation/screens/ProductDetails.dart';
+import 'package:tasteify/Feature/Favourite/ViewModel/models/Favmodel.dart';
 
 class FavScreen extends StatelessWidget {
   const FavScreen({super.key});
@@ -75,10 +74,14 @@ class FavScreen extends StatelessWidget {
                     childAspectRatio: 0.75,
                   ),
                   itemBuilder: (context, index) {
-                    final Product product = state.favProduct[index];
+                    final FavProduct product = state.favProduct[index];
                     return GestureDetector(
-                      onTap: (){
-                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetailsScreen(productId: product.id, categoryId: product.,)));
+                      onTap: () {
+                        // Navigator.push(context, MaterialPageRoute(
+                        //   builder: (context) => ProductDetailsScreen(
+                        //     productId: product.id,
+                        //   ),
+                        // ));
                       },
                       child: ProductCard(
                         imagePath: product.imageUrl,
