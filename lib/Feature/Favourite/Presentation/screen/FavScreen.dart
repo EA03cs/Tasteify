@@ -6,6 +6,7 @@ import 'package:tasteify/Core/widgets/ProductCard.dart';
 import 'package:tasteify/Core/widgets/custAppBaar.dart';
 import 'package:tasteify/Feature/Favourite/ViewModel/Cubit/fav_cubit.dart';
 import 'package:tasteify/Feature/Categories/ViewModel/model/CategoryWithProducts.dart';
+import 'package:tasteify/Feature/productdetails/presentation/screens/ProductDetails.dart';
 
 class FavScreen extends StatelessWidget {
   const FavScreen({super.key});
@@ -75,18 +76,23 @@ class FavScreen extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) {
                     final Product product = state.favProduct[index];
-                    return ProductCard(
-                      imagePath: product.imageUrl,
-                      productName: product.name,
-                      price: '${product.finalPrice.toStringAsFixed(2)} ج.م',
-                      discount: product.discountPercentage,
-                      isWeighedProduct: product.isWeighedProduct,
-                      unitSymbol: product.unitSymbol,
-                      isFavorite: true,
-                      onFavoritePressed: () =>
-                          context.read<FavCubit>().removeFromFav(product.id),
-                      onAddPressed: () {
+                    return GestureDetector(
+                      onTap: (){
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetailsScreen(productId: product.id, categoryId: product.,)));
                       },
+                      child: ProductCard(
+                        imagePath: product.imageUrl,
+                        productName: product.name,
+                        price: '${product.finalPrice.toStringAsFixed(2)} ج.م',
+                        discount: product.discountPercentage,
+                        isWeighedProduct: product.isWeighedProduct,
+                        unitSymbol: product.unitSymbol,
+                        isFavorite: true,
+                        onFavoritePressed: () =>
+                            context.read<FavCubit>().removeFromFav(product.id),
+                        onAddPressed: () {
+                        },
+                      ),
                     );
                   },
                 ),
