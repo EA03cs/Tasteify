@@ -69,9 +69,10 @@ class FavScreen extends StatelessWidget {
                   itemCount: state.favProduct.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 10.w,
-                    mainAxisSpacing: 10.h,
-                    childAspectRatio: 0.75,
+                    crossAxisSpacing: 12.w,
+                    mainAxisSpacing: 12.h,
+                    mainAxisExtent: 180.h,
+                    childAspectRatio: 0.7.w,
                   ),
                   itemBuilder: (context, index) {
                     final FavProduct product = state.favProduct[index];
