@@ -24,7 +24,7 @@ class _RootState extends State<Root> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const FavScreen(),
-    const Cart(),
+    const CartScreen(),
     const ProfileView(),
 
   ];
@@ -40,9 +40,8 @@ class _RootState extends State<Root> {
         backgroundColor: Colors.transparent,
         color: AppColors.darkerRed,
         buttonBackgroundColor: AppColors.primaryRed,
-        height: 65.h,
+        height: MediaQuery.of(context).size.height * 0.1,
         animationDuration: const Duration(milliseconds: 300),
-
         items: [
           CurvedNavigationBarItem(
             child: Icon(
